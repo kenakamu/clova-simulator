@@ -1,0 +1,18 @@
+.main{
+    float: left;
+    padding-right: 5px;
+    position: relative;
+}
+.rawdata{
+    float: left;
+    padding-right: 5px;
+    position: relative;
+}
+
+.title{
+    padding-right: 25px;
+}
+.line{
+    color: rgba(0,187,0,1);
+    font-weight: bolder;
+}

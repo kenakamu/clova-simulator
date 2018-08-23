@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Clova Simulator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body class="col-md-12">
+
+    <form class="form-inline">
+        <div class="form-group">
+            <h2 class="title">
+                <b>
+                    <span class="line">Clova</span> Simulator</b>
+            </h2>
+        </div>
+        <div class="form-group">
+            <label>UserId:</label>
+            <input class="form-control" type=text placeholder="U21d2cd1795be4caa1a32dxxxxxxxx" id="userId" value="Ub52068e99db3ecb41ba56ac6c7260d23" />
+        </div>
+        <div class="form-group">
+            <label>CEK Server:</label>
+            <input class="form-control" type=text placeholder="http://localhost:1590/api/clova" id="cekAPIAddress" value="http://localhost:51657/api/quiz"
+            />
+        </div>
+        <div class="form-group">
+            <label>AppId:</label>
+            <input class="form-control" type=text placeholder="om.yourdomain.extension.pizzabot" id="applicationId" value="test" />
+        </div>
+        <a class="btn btn-success" onclick="save()">SAVE</a>
+    </form>
+
+    <div class="main col-md-2">
+        <div class="row">
+            <a class="btn btn-primary" onclick="sendLaunch();">LAUNCH</a>
+            <a class="btn btn-danger" onclick="sendSessionEnded();">END</a>
+        </div>
+        <form>
+            <div class="form-group">
+                <h4>Intent:</h4>
+                <input class="form-control" type=text placeholder="Answer" id="intentName" value="Answer" />
+            </div>
+            <div class="form-group">
+                <h4>Slot:</h4>
+                <input class="form-control" type=text placeholder="Answer" id="slotName" value="Answer" />
+            </div>
+            <div class="form-group">
+                <h4>SlotValue:</h4>
+                <input class="form-control" type=text placeholder="トムクルーズ" id="slotValue" value="トムクルーズ" />
+            </div>
+        </form>
+        <div class="row">
+            <a class="btn btn-success" onclick="sendIntent();">SEND INTENT</a>
+        </div>
+    </div>
+    <div class="rawdata col-md-10">
+        <div>
+            <pre id="speech">    
+        </div>
+        <div>
+            <pre id="rawdata">               
+        </div>
+    </div>
+    <h1 id="message">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="./../js/index.js"></script>
+</body>
+</html>

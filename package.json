@@ -1,0 +1,20 @@
+{
+  "name": "clova-simulator",
+  "version": "0.1.0",
+  "description": "clova simulator for CEK",
+  "main": "main.js",
+  "scripts": {
+    "start": "start http://localhost:1234 && node main.js",
+		"startMac": "open http://localhost:1234 && node main.js",
+		"startLinux": "xdg-open http://localhost:1234 && node main.js"
+  },
+  "keywords": ["clova","cek","simulator"],
+  "author": "kenakamu",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "request": "^2.87.0",
+    "uuid": "^3.3.2"
+  }
+}
