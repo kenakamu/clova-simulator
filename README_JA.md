@@ -16,12 +16,12 @@
 >npm install
 ```
 
-3\. 環境にあうコマンドを実行してアプリを開始。サーバーが実行されブラウザが起動。
+3\. 環境にあうコマンドを実行してアプリを開始。サーバーが実行されブラウザが起動。画面がうまく表示されない場合はリフレッシュ。
 
 ```shell
->npm start
->npm startMac
->npm startLinux
+>npm run start
+>npm run startMac
+>npm run startLinux
 ```
 ![top.png](./Readme_Images/top.PNG)
 

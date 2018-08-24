@@ -21,9 +21,9 @@ This repository contains clova simulator for CEK for debugging purpose to speed 
 3\. Run the app. Pickup the right command for your environment. It runs server and opens a browser.
 
 ```shell
->npm start
->npm startMac
->npm startLinux
+>npm run start
+>npm run startMac
+>npm run startLinux
 ```
 ![top.png](./Readme_Images/top.PNG)
 
