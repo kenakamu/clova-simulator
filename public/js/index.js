@@ -1,11 +1,13 @@
 
 var sessionAttributes;
 var sessionId;
+var enableSpeech;
 
 function onload() {
     $('#cekAPIAddress')[0].value = localStorage.getItem('cekAPIAddress');
     $('#userId')[0].value = localStorage.getItem('userId');
     $('#applicationId')[0].value = localStorage.getItem('applicationId');
+    $('#enableSpeech')[0].value = localStorage.getItem('enableSpeech');
     save();
 }
 
@@ -14,9 +16,11 @@ function save() {
     let cekAPIAddress = $('#cekAPIAddress').val().toString();
     let userId = $('#userId').val().toString();
     let applicationId = $('#applicationId').val().toString();
+    enableSpeech = $('#enableSpeech')[0].checked;
     localStorage.setItem('cekAPIAddress', cekAPIAddress);
     localStorage.setItem('userId', userId);
     localStorage.setItem('applicationId', applicationId);
+    localStorage.setItem('enableSpeech', enableSpeech);
     let reqeustBody = { "cekAPIAddress": cekAPIAddress, "userId": userId, "applicationId": applicationId };
     $.ajax({
         url: "/save",
@@ -94,13 +98,16 @@ function displayResult(body) {
     let response = JSON.parse(body);
     // Parse speech elements.
     let speech = "";
+
     if (response.response.outputSpeech.values) {
         if (response.response.outputSpeech.type == "SimpleSpeech") {
             speech += response.response.outputSpeech.values.value + "\r\n";
+            speak(response.response.outputSpeech.values);
         }
         else {
             response.response.outputSpeech.values.forEach((value) => {
                 speech += value.value + "\r\n";
+                speak(value);
             });
         }
     }
@@ -109,16 +116,37 @@ function displayResult(body) {
     }
     if (response.response.outputSpeech.verbose) {
         if (response.response.outputSpeech.verbose.type == "SimpleSpeech") {
-            speech += response.response.outputSpeech.verbose.value + "\r\n";
+            speech += response.response.outputSpeech.verbose.values.value + "\r\n";
+            speak(response.response.outputSpeech.verbose.values);
         }
         else {
             response.response.outputSpeech.verbose.values.forEach((value) => {
                 speech += value.value + "\r\n";
+                speak(value);
             });
         }
     }
     $('#speech')[0].innerText = speech;
+
     $('#rawdata')[0].innerText = JSON.stringify(response, null, '  ');
 }
 
+function speak(speechInfoObject) {
+    if(!enableSpeech || speechInfoObject.type == "URL"){
+        return;
+    }
+    let msg = new SpeechSynthesisUtterance(speechInfoObject.value);
+    switch (speechInfoObject.lang) {
+        case "en":
+            msg.lang = "en-US";
+            break;
+        case "ja":
+            msg.lang = "ja-JP";
+            break;
+        case "ko":
+            msg.lang = "ko-KR";
+            break;
+    }
+    window.speechSynthesis.speak(msg);
+}
 onload();

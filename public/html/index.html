@@ -19,7 +19,8 @@
         </div>
         <div class="form-group">
             <label>UserId:</label>
-            <input class="form-control" type=text placeholder="U21d2cd1795be4caa1a32dxxxxxxxx" id="userId" value="Ub52068e99db3ecb41ba56ac6c7260d23" />
+            <input class="form-control" type=text placeholder="U21d2cd1795be4caa1a32dxxxxxxxx" id="userId" value="Ub52068e99db3ecb41ba56ac6c7260d23"
+            />
         </div>
         <div class="form-group">
             <label>CEK Server:</label>
@@ -29,6 +30,11 @@
         <div class="form-group">
             <label>AppId:</label>
             <input class="form-control" type=text placeholder="om.yourdomain.extension.pizzabot" id="applicationId" value="test" />
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="enableSpeech"> Enable speech
+            </label>
         </div>
         <a class="btn btn-success" onclick="save()">SAVE</a>
     </form>
@@ -41,15 +47,15 @@
         <form>
             <div class="form-group">
                 <h4>Intent:</h4>
-                <input class="form-control" type=text placeholder="Answer" id="intentName" value="Answer" />
+                <input class="form-control" type=text placeholder="OrderPizza" id="intentName" value="OrderPizza" />
             </div>
             <div class="form-group">
                 <h4>Slot:</h4>
-                <input class="form-control" type=text placeholder="Answer" id="slotName" value="Answer" />
+                <input class="form-control" type=text placeholder="pizzaType" id="slotName" value="pizzaType" />
             </div>
             <div class="form-group">
                 <h4>SlotValue:</h4>
-                <input class="form-control" type=text placeholder="トムクルーズ" id="slotValue" value="トムクルーズ" />
+                <input class="form-control" type=text placeholder="クアトロピザ" id="slotValue" value="クアトロピザ" />
             </div>
         </form>
         <div class="row">
