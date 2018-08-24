@@ -37,6 +37,7 @@ function save() {
 
 /// Send Intent Request
 function sendIntent() {
+    checkUri();
     let intentName = $('#intentName').val().toString();
     let slotName = $('#slotName').val().toString();
     let slotValue = $('#slotValue').val().toString();
@@ -66,6 +67,7 @@ function sendIntent() {
 
 /// Send Launch Request
 function sendLaunch() {
+    checkUri();
     $.ajax({
         url: "/sendLaunch",
         contentType: "application/json",
@@ -81,6 +83,7 @@ function sendLaunch() {
 
 /// Send SessionEnded Request
 function sendSessionEnded() {
+    checkUri();
     $.ajax({
         url: "/sendSessionEnded",
         contentType: "application/json",
@@ -148,5 +151,11 @@ function speak(speechInfoObject) {
             break;
     }
     window.speechSynthesis.speak(msg);
+}
+
+function checkUri(){
+    if(!$('#cekAPIAddress').val().toString()){
+        alert("Enter CEK Server first.");
+    }
 }
 onload();
