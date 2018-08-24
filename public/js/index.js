@@ -95,17 +95,27 @@ function displayResult(body) {
     // Parse speech elements.
     let speech = "";
     if (response.response.outputSpeech.values) {
-        response.response.outputSpeech.values.forEach((value) => {
-            speech += value.value + "\r\n";
-        });
+        if (response.response.outputSpeech.type == "SimpleSpeech") {
+            speech += response.response.outputSpeech.values.value + "\r\n";
+        }
+        else {
+            response.response.outputSpeech.values.forEach((value) => {
+                speech += value.value + "\r\n";
+            });
+        }
     }
     if (response.response.outputSpeech.brief) {
         speech += response.response.outputSpeech.brief.value;
     }
     if (response.response.outputSpeech.verbose) {
-        response.response.outputSpeech.verbose.values.forEach((value) => {
-            speech += value.value + "\r\n";
-        });
+        if (response.response.outputSpeech.verbose.type == "SimpleSpeech") {
+            speech += response.response.outputSpeech.verbose.value + "\r\n";
+        }
+        else {
+            response.response.outputSpeech.verbose.values.forEach((value) => {
+                speech += value.value + "\r\n";
+            });
+        }
     }
     $('#speech')[0].innerText = speech;
     $('#rawdata')[0].innerText = JSON.stringify(response, null, '  ');
