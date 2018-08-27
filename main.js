@@ -70,14 +70,14 @@ function send(requestBody, res) {
             method: 'POST'
         },
         function (error, response, body) {
-            let result;
             try {
-                result = JSON.parse(body);
+                let result = JSON.parse(body);
                 sessionAttributes = result.sessionAttributes;
-            } catch (e) {
-                console.log(e);
+                res.send(body);
             }
-            res.send(body);
+            catch (ex){
+                res.send("Something went wrong.");
+            }
         }
     );
 }
