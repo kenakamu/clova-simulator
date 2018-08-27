@@ -61,17 +61,22 @@ express.post('/sendSessionEnded', function (req, res) {
 /// Sign by RSA key is not implemented.
 function send(requestBody, res) {
     request({
-        headers: {
-            "Content-Type": "application/json",
-            "SignatureCEK": "dummy"
+            headers: {
+                "Content-Type": "application/json",
+                "SignatureCEK": "dummy"
+            },
+            uri: cekAPIAddress,
+            body: JSON.stringify(requestBody),
+            method: 'POST'
         },
-        uri: cekAPIAddress,
-        body: JSON.stringify(requestBody),
-        method: 'POST'
-    },
         function (error, response, body) {
-            let result = JSON.parse(body);
-            sessionAttributes = result.sessionAttributes;
+            let result;
+            try {
+                result = JSON.parse(body);
+                sessionAttributes = result.sessionAttributes;
+            } catch (e) {
+                console.log(e);
+            }
             res.send(body);
         }
     );
