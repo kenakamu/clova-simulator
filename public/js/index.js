@@ -61,6 +61,7 @@ function sendIntent() {
             displayResult(body);
         },
         error: function (xhr, ajaxOptions, thrownError) {
+            alert("Request Failed!")
         }
     });
 }
@@ -76,6 +77,7 @@ function sendLaunch() {
             displayResult(body);
         },
         error: function (xhr, ajaxOptions, thrownError) {
+            alert("Request Failed!")
         }
     });
 }
@@ -92,13 +94,24 @@ function sendSessionEnded() {
             displayResult(body);
         },
         error: function (xhr, ajaxOptions, thrownError) {
+            alert("Request Failed!")
         }
     });
 }
 
 /// Parse the result and display.
 function displayResult(body) {
-    let response = JSON.parse(body);
+    let response;
+    try {
+        response = JSON.parse(body);
+    } catch (e) {
+        $('#speech')[0].innerText = "Failed to parse json: " + e.toString();
+    }
+
+    if (response == null) {
+        return;
+    }
+
     // Parse speech elements.
     let speech = "";
 
