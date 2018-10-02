@@ -109,6 +109,11 @@ function displayResult(body) {
     }
 
     if (response == null) {
+        $('#speech')[0].innerText = "Response is null";
+        return;
+    }
+    if (!response.response) {
+        $('#speech')[0].innerText = "Unexpected CEK server response:\r\n" + JSON.stringify(response);
         return;
     }
 
